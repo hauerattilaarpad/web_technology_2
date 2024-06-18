@@ -1,0 +1,44 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            
+            <th>ID</th>
+            <th>Név</th>
+            <th>Ár</th>
+            <th>Alaplap</th>
+            <th>Processzor</th>
+            <th>Hűtő</th>
+            <th>Videókártya</th>
+            <th>Memória</th>
+            <th>Tárhely</th>
+            <th>Ház</th>
+            <th>Táp</th>
+            <th *ngIf="authService.isLoggedIn()">Módosítás</th>
+            <th *ngIf="authService.isLoggedIn()">Törlés</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for( computer of computers; track $index){
+        <tr>
+            
+            <td>{{computer.id}}</td>
+            <td>{{computer.name}}</td>
+            <td>{{computer.price}}</td>
+            <td>{{computer.motherboard}}</td>
+            <td>{{computer.cpu}}</td>
+            <td>{{computer.cooler}}</td>
+            <td>{{computer.gpu}}</td>
+            <td>{{computer.ram}}</td>
+            <td>{{computer.storage}}</td>
+            <td>{{computer.case}}</td>
+            <td>{{computer.powersupply}}</td>
+            <td *ngIf="authService.isLoggedIn()">
+                <button class="btn btn-primary btn-sm" (click)="goToComputerForm(computer.id)">Módosítás</button>
+            </td>
+            <td *ngIf="authService.isLoggedIn()">
+                <button class="btn btn-danger btn-sm" (click)="deleteComputer(computer)">Törlés</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,29 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Név</th>
+            <th>Cím</th>
+            <th>Email</th>
+            <th *ngIf="authService.isLoggedIn()">Módosítás</th>
+            <th *ngIf="authService.isLoggedIn()">Törlés</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for( customer of customers; track $index){
+        <tr>
+           
+            <td>{{customer.id}}</td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.address}}</td>
+            <td>{{customer.email}}</td>
+            <td *ngIf="authService.isLoggedIn()">
+                <button class="btn btn-primary btn-sm" (click)="goToCustomerForm(customer.id)">Módosítás</button>
+            </td>
+            <td *ngIf="authService.isLoggedIn()">
+                <button class="btn btn-danger btn-sm" (click)="deleteCustomer(customer)">Törlés</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

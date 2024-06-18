@@ -1,0 +1,30 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Vásárló</th>
+            <th>Számítógép</th>
+            <th>Időpont</th>
+            <th>Szállítás fajta</th>
+            <th *ngIf="authService.isLoggedIn()">Módosítás</th>
+            <th *ngIf="authService.isLoggedIn()">Törlés</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for( purchase of purchases; track $index){
+        <tr>
+            <td>{{purchase.id}}</td>
+            <td>{{purchase.customer?.name}}</td>
+            <td>{{purchase.computer?.name}}</td>
+            <td>{{purchase.date}}</td>
+            <td>{{purchase.deliverytype}}</td>
+            <td *ngIf="authService.isLoggedIn()">
+                <button class="btn btn-primary btn-sm" (click)="goToPurchaseForm(purchase.id)">Módosítás</button>
+            </td>
+            <td *ngIf="authService.isLoggedIn()">
+                <button class="btn btn-danger btn-sm" (click)="deletePurchase(purchase)">Törlés</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

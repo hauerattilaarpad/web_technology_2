@@ -1,0 +1,7 @@
+.bg-yellow {
+    background-color: #FFC107 !important; /* Bootstrap sárga szín */
+  }
+  
+  .navbar-brand, .nav-link {
+    color: #000 !important; /* Fekete szöveg a jobb olvashatóság érdekében */
+  }
